@@ -1,0 +1,5 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/java/apache-tomcat-6.0.18/webapps/explorandoangularjs/bower_components/restangular/test/restangularSpec.js"
+    ]
+}

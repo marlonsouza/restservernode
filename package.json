@@ -1,0 +1,23 @@
+{
+  "name": "restserver",
+  "version": "0.0.0",
+  "description": "Server rest node com mysql",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.9.4",
+    "mysql": "~2.5.0",
+    "body-parser": "^1.8.3",
+    "morgan": "~1.2.2",
+    "method-override": "~2.1.2",
+    "express-load": "^1.1.14",
+    "stringbuilder": "",
+    "squel": "^3.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "marlonsouza",
+  "license": "ISC"
+}
