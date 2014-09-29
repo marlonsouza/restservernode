@@ -1,3 +1,5 @@
+var httpUtil = require('./httputil.js');
+
 module.exports = {
 
     select: function(objConnection, objResponse, strQuery){
@@ -38,11 +40,33 @@ module.exports = {
 
     },
 
-    update: function(){
-
+    update: function(objConnection, objResponse, strQuery, objUpdate){
+        objConnection.query(strQuery, objUpdate, function(objError, objResult){
+            if(objError){
+                httpUtil.sendError(objResponse, 500, 'error', 'query', objError);
+            }else{
+               objResponse.send({
+                    result: 'sucess',
+                    err: '',
+                    err_type: '',
+                    items: objResult.changedRows
+               });
+            }
+        });
     },
 
-    delete: function(){
-
+    delete: function(objConnection, objResponse, strQuery, id){
+        objConnection.query(strQuery,[id], function(objError, objResult){
+            if(objError){
+                httpUtil.sendError(objResponse, 500, 'error', 'query', objError);
+            }else{
+                objResponse.send({
+                    result: 'sucess',
+                    err: '',
+                    err_type: '',
+                    row: objResult.affectedRows
+                });
+            }
+        });
     }
 }

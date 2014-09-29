@@ -10,8 +10,9 @@
     "morgan": "~1.2.2",
     "method-override": "~2.1.2",
     "express-load": "^1.1.14",
+    "squel": "^3.8.1",
     "stringbuilder": "",
-    "squel": "^3.8.1"
+    "string-builder":""
   },
   "devDependencies": {},
   "scripts": {

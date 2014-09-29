@@ -5,6 +5,8 @@ module.exports = function(app) {
   console.dir('/itens');
 
   app.get('/restserver/itens', itemModel.getAll);
-  app.options('/restserver/item', itemModel.other);
   app.post('/restserver/item', itemModel.new);
+  app.put('/restserver/item/:id', itemModel.update);
+  app.delete('/restserver/item/:id', itemModel.del);
+
 };

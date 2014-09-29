@@ -2,6 +2,7 @@ var connection  = require('../common/pooldb.js');
 var httpUtil = require('../common/httputil.js');
 var dbquery = require('../common/dbquery.js');
 var squel = require('squel');
+var stringbuilder = require('string-builder');
 
 module.exports = {
 
@@ -53,11 +54,52 @@ module.exports = {
         });
     },
 
-    other: function(objRequest, objResponse, next){
-        console.dir('opt');
+    update: function(objRequest, objResponse){
+        console.dir('update');
 
         httpUtil.defineHeaderResponse(objRequest, objResponse);
 
-        next();
+        connection.db_pool.getConnection(function(objError, objConnection){
+           if(objError){
+               httpUtil.sendError(objResponse, 503, 'error', objConnection);
+           }else{
+
+                var strQuery = "UPDATE itens SET ? WHERE i_item=?";
+
+               var id  = objRequest.params.id;
+
+               var item = {
+                    nome: objRequest.body.nome
+               }
+
+               console.dir(strQuery);
+               console.dir(item);
+
+               dbquery.update(objConnection, objResponse, strQuery, item);
+
+               objConnection.release();
+           }
+        });
+    },
+
+    del: function(objRequest, objResponse){
+
+        console.dir('del');
+
+        httpUtil.defineHeaderResponse(objRequest, objResponse);
+
+        connection.db_pool.getConnection(function(objError, objConnection){
+            if(objError){
+                httpUtil.sendError(objResponse, 503, 'error', objConnection);
+            }else{
+               var strQuery ="DELETE FROM itens WHERE i_item = ?";
+
+                var id = objRequest.params.id;
+
+                dbquery.delete(objConnection, objResponse, strQuery, id);
+
+                objConnection.release();
+            }
+        });
     }
 }
