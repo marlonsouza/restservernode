@@ -18,6 +18,7 @@ module.exports = {
                var strQuery = squel
                                 .select()
                                 .from('estoque', 'e')
+                                .field('id')
                                 .field(squel
                                         .select()
                                         .from('itens', 'i')
