@@ -9,7 +9,11 @@ module.exports =  {
     },
 
     defineHeaderResponse: function(req, res){
-          res.setHeader('content-type', 'application/json');
-          res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+
+          res.header('Access-Control-Allow-Origin', '*');
+          res.header('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type');
+          res.header('AAccess-Control-Expose-Headers', 'Location, Content-Disposition');
+          res.header('Access-Control-Allow-Methods', 'POST, PUT, GET, DELETE, HEAD, OPTIONS');
+
     }
 }
