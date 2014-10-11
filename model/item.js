@@ -9,8 +9,6 @@ module.exports = {
     getAll: function(objRequest, objResponse){
         console.dir('getAll');
 
-        httpUtil.defineHeaderResponse(objRequest, objResponse);
-
         connection.db_pool.getConnection(function(objError, objConnection){
            if(objError){
                 httpUtil.sendError(objResponse, 503, 'error', objConnection);
@@ -32,8 +30,6 @@ module.exports = {
 
     new: function(objRequest, objResponse){
         console.dir('new');
-
-        httpUtil.defineHeaderResponse(objRequest, objResponse);
 
         connection.db_pool.getConnection(function(objError, objConnection){
             if(objError){
@@ -57,9 +53,7 @@ module.exports = {
     update: function(objRequest, objResponse){
         console.dir('update');
 
-        httpUtil.defineHeaderResponse(objRequest, objResponse);
-
-        connection.db_pool.getConnection(function(objError, objConnection){
+       connection.db_pool.getConnection(function(objError, objConnection){
            if(objError){
                httpUtil.sendError(objResponse, 503, 'error', objConnection);
            }else{
@@ -85,8 +79,6 @@ module.exports = {
     del: function(objRequest, objResponse){
 
         console.dir('del');
-
-        httpUtil.defineHeaderResponse(objRequest, objResponse);
 
         connection.db_pool.getConnection(function(objError, objConnection){
             if(objError){
