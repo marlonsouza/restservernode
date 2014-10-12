@@ -7,6 +7,6 @@ module.exports = {
         port: '3306',
         database: 'explorando_angularjs',
         user: 'root',
-        password: 'root'
+        password: 'sql'
     })
 }
